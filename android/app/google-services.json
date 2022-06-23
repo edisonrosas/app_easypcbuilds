@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "185920003877",
+    "project_id": "social-trip-3b4c4",
+    "storage_bucket": "social-trip-3b4c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185920003877:android:cf7b562cec24670389c4cc",
+        "android_client_info": {
+          "package_name": "com.example.turismoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185920003877-a4gtg3vhgl1d4etbbnphglqgudrmnpav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkUtT9mqTYasRjlaDgpSAtDTZ6c9X4phI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185920003877-a4gtg3vhgl1d4etbbnphglqgudrmnpav.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "185920003877-a1hd4rf9kcu4fr6eb0qfa00mtkcoksuf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.turismoapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
