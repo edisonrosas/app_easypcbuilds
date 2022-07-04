@@ -1,12 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:turismoapp/models/user.dart' as model;
 import 'package:turismoapp/providers/user_provider.dart';
 import 'package:turismoapp/resources/firestore_methods.dart';
 import 'package:turismoapp/utils/colors.dart';
 import 'package:turismoapp/widgets/follow_button.dart';
 import 'package:provider/provider.dart';
+
+import '../resources/auth_methods.dart';
+import 'login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -50,11 +54,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
       isLoading = false;
     });
   }
+  void clearData(){
+
+      isFollowing = false;
+      postsLen = 0;
+      userData = {};
+      isLoading = false;
+      followers = 0;
+
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    getPostsLen();
+  }
 
   @override
   Widget build(BuildContext context) {
     final model.User user = Provider.of<UserProvider>(context).getUser;
-
+    final UserProvider usuario = Provider.of<UserProvider>(context,listen: false);
     return isLoading
         ? const Center(
             child: CircularProgressIndicator(),
@@ -109,12 +128,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     children: <Widget>[
                                       user.uid == widget.uid
                                           ? FollowButton(
-                                              text: "Edit Profile",
+                                              text: "Sign Out",
                                               backgroundColor:
                                                   mobileBackgroundColor,
                                               textColor: primaryColor,
                                               borderColor: Colors.grey,
-                                              function: () {},
+                                            function: () async {
+                                              await AuthMethods().signOut();
+                                              clearData();
+                                              print("hola");
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                const LoginScreen(),
+                                              );
+                                            },
                                             )
                                           : isFollowing
                                               ? FollowButton(

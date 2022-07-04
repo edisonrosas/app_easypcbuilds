@@ -6,9 +6,15 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-feature android:name="android.hardware.location.gps"/>
    <application
-        android:label="turismoapp"
+        android:label="Social-Trip"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyDi_K_aU-MzshxzxQijn000AF6o2wM5m84"/>
+       <meta-data
+           android:name="com.google.android.gms.version"
+           android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

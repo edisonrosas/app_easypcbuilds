@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:turismoapp/widgets/map_screen.dart';
 
 import '../providers/user_provider.dart';
 import '../resources/firestore_methods.dart';
@@ -20,7 +21,15 @@ class _AddPostState extends State<AddPost> {
   Uint8List? _file;
   bool isLoading = false;
   final TextEditingController _descriptionController = TextEditingController();
-
+  final TextEditingController _ubicationTitleController = TextEditingController();
+  final TextEditingController _ubicationSnippetController = TextEditingController();
+  var myMap = <String, dynamic>{};
+  void getLocation(double latitud, double longitud){
+    setState(() {
+      myMap["latitud"] = latitud;
+      myMap["longitud"] = longitud;
+    });
+  }
   _selectImage(BuildContext parentContext) async {
     return showDialog(
       context: parentContext,
@@ -65,29 +74,62 @@ class _AddPostState extends State<AddPost> {
     setState(() {
       isLoading = true;
     });
-    try {
-      String res = await FireStoreMethods().uploadPost(
-        _descriptionController.text,
-        _file!,
-        uid,
-        username,
-        profImage
-      );
-      if (res == "success") {
+    if (_ubicationTitleController.text.isEmpty) {
+      try {
+        String res = await FireStoreMethods().uploadPost(
+            _descriptionController.text,
+            _file!,
+            uid,
+            username,
+            profImage,
+            myMap['latitud'], myMap['longitud'],
+            "",
+            ""
+        );
+        if (res == "success") {
+          setState(() {
+            isLoading = false;
+          });
+          showSnackBar('Posted!', context, false);
+          clearImage();
+        }else {
+          showSnackBar(res, context, true);
+        }
+      } catch (err) {
         setState(() {
           isLoading = false;
         });
-        showSnackBar('Posted!', context, false);
-        clearImage();
-      }else {
-        showSnackBar(res, context, true);
+        showSnackBar(err.toString(), context, true);
       }
-    } catch (err) {
-      setState(() {
-        isLoading = false;
-      });
-      showSnackBar(err.toString(), context, true);
+    }else {
+      try {
+        String res = await FireStoreMethods().uploadPost(
+            _descriptionController.text,
+            _file!,
+            uid,
+            username,
+            profImage,
+            myMap['latitud'], myMap['longitud'],
+            _ubicationTitleController.text,
+            _ubicationSnippetController.text
+        );
+        if (res == "success") {
+          setState(() {
+            isLoading = false;
+          });
+          showSnackBar('Posted!', context, false);
+          clearImage();
+        }else {
+          showSnackBar(res, context, true);
+        }
+      } catch (err) {
+        setState(() {
+          isLoading = false;
+        });
+        showSnackBar(err.toString(), context, true);
+      }
     }
+
   }
 
   @override
@@ -156,13 +198,13 @@ class _AddPostState extends State<AddPost> {
                           NetworkImage(userProvider.getUser.photoUrl),
                     ),
                     SizedBox(
-                      width: 250.0,
+                      width: 200.0,
                       child: TextField(
                         controller: _descriptionController,
                         decoration: const InputDecoration(
                             hintText: "Write a caption...",
                             border: InputBorder.none),
-                        maxLines: 8,
+                        maxLines: 6,
                       ),
                     ),
                     SizedBox(
@@ -182,6 +224,23 @@ class _AddPostState extends State<AddPost> {
                     ),
                   ],
                 ),
+                TextField(
+                    controller: _ubicationTitleController,
+                    decoration: const InputDecoration(
+                        hintText: "Write a title for the ubication ...",
+                        border: InputBorder.none),
+                  ),
+                TextField(
+                    controller: _ubicationSnippetController,
+                    decoration: const InputDecoration(
+                        hintText: "Write a caption...",
+                        border: InputBorder.none)
+                  ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.45,
+                  child: MapScreen(customFunction: getLocation),
+                )
+
               ],
             ),
           );

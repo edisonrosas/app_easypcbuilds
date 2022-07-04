@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:turismoapp/utils/colors.dart';
 import 'package:intl/intl.dart';
+import 'package:turismoapp/widgets/ShowUbication.dart';
 import 'package:turismoapp/widgets/like_animation.dart';
 import 'package:turismoapp/models/user.dart' as model;
 
@@ -68,10 +69,22 @@ class _PostCardState extends State<PostCard> {
       );
     }
   }
+  void showUbication() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          if (widget.snap["ubicationTitle"] == ""){
+            return ShowUbication(latitud: widget.snap['latitud'], longitud: widget.snap['longitud']);
+          }else {
+            return ShowUbication(latitud: widget.snap['latitud'], longitud: widget.snap['longitud'],title: widget.snap["ubicationTitle"] ,snippet: widget.snap["ubicationSnippet"],);
+          }
 
+        });
+  }
   @override
   Widget build(BuildContext context) {
     final model.User user = Provider.of<UserProvider>(context).getUser;
+
     return Column(
       children: [
         // HEADER SECTION OF THE POST
@@ -231,7 +244,11 @@ class _PostCardState extends State<PostCard> {
                 child: Align(
               alignment: Alignment.bottomRight,
               child: IconButton(
-                  icon: const Icon(Icons.bookmark_border), onPressed: () {}),
+                  icon: const Icon(Icons.location_on_outlined ),
+                  onPressed: showUbication,
+
+              ),
+
             ))
           ],
         ),
