@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -127,22 +128,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         MainAxisAlignment.spaceEvenly,
                                     children: <Widget>[
                                       user.uid == widget.uid
-                                          ? FollowButton(
-                                              text: "Sign Out",
-                                              backgroundColor:
-                                                  mobileBackgroundColor,
-                                              textColor: primaryColor,
-                                              borderColor: Colors.grey,
-                                            function: () async {
-                                              await AuthMethods().signOut();
-                                              clearData();
-                                              print("hola");
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                const LoginScreen(),
-                                              );
-                                            },
-                                            )
+                                          ? SizedBox(
+                                        width: MediaQuery.of(context).size.width * 0.70,
+                                        child:FollowButton(
+                                          text: "Sign Out",
+                                          backgroundColor:
+                                          mobileBackgroundColor,
+                                          textColor: primaryColor,
+                                          borderColor: Colors.grey,
+                                          function: () async {
+                                            await AuthMethods().signOut();
+                                            clearData();
+                                            print("hola");
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                              const LoginScreen(),
+                                            );
+                                          },
+                                        ) ,
+                                      )
+
                                           : isFollowing
                                               ? FollowButton(
                                                   text: "Unfollow",
@@ -226,12 +231,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         DocumentSnapshot video =
                             (snapshot.data! as dynamic).docs[index];
                         return Container(
-                          child: Image(
-                            image: NetworkImage(
-                              (video.data()! as dynamic)["postUrl"],
-                            ),
+                          child: CachedNetworkImage(
+                            imageUrl: (video.data()! as dynamic)["postUrl"],
                             fit: BoxFit.cover,
-                          ),
+                            progressIndicatorBuilder: (context,url,progress){
+                              return ColoredBox(
+                                color: Colors.black12,
+                                child: Center(child:CircularProgressIndicator(value: progress.progress,)),
+                              );
+                            },
+                            errorWidget: (context,url,error) => const ColoredBox(
+                              color: Colors.black12,
+                              child: Icon(Icons.error,size: 50,color: Colors.red,),
+                            ),
+                          )
+                          // Image(
+                          //   image: NetworkImage(
+                          //     (video.data()! as dynamic)["postUrl"],
+                          //   ),
+                          //   fit: BoxFit.cover,
+                          // ),
                         );
                       },
                     );

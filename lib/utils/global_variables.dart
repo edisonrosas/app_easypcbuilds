@@ -9,6 +9,7 @@ import 'package:turismoapp/screens/feed_screen.dart';
 import 'package:turismoapp/screens/search_screen.dart';
 
 import '../providers/user_provider.dart';
+import '../screens/like_screen.dart';
 import '../screens/profile_screen.dart';
 
 // void logout() async {
@@ -19,20 +20,7 @@ List<Widget> homeScreenItems = [
   const FeedScreen(),
   const SearchScreen(),
   const AddPost(),
-  Container(
-    height: 600,
-    // ignore: unnecessary_const
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Spacer(),
-        InkWell(
-          onTap: () {},
-          child: Text("sign out off"),
-        )
-      ],
-    ),
-  ),
+  const LikeScreen(),
   ProfileScreen(
     uid: FirebaseAuth.instance.currentUser!.uid,
   )
