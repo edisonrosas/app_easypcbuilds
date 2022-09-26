@@ -35,6 +35,7 @@ class AuthMethods {
 
     return model.User.fromSnap(documentSnapshot);
   }
+
   List<String> setSearchParam(String caseNumber) {
     List<String> caseSearchList = [];
     String temp = "";
@@ -50,31 +51,30 @@ class AuthMethods {
     required String password,
     required String username,
     required String bio,
-    required Uint8List file,
+    // required Uint8List file,
   }) async {
     String res = "Some error ocurred";
     try {
       if (email.isNotEmpty ||
           password.isNotEmpty ||
           username.isNotEmpty ||
-          bio.isNotEmpty ||
-          file != null) {
+          bio.isNotEmpty) {
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
-        String photoUrl = await StorageMethods()
-            .uploadImageToStorage('profilePics', file,false);
+        // String photoUrl = await StorageMethods()
+        //     .uploadImageToStorage('profilePics', file,false);
 
-        model.User user = model.User(
-            username: username,
-            uid: cred.user!.uid,
-            email: email,
-            bio: bio,
-            followers: [],
-            following: [],
-            photoUrl: photoUrl,
-            caseSearch: setSearchParam(username));
+        // model.User user = model.User(
+        //     username: username,
+        //     uid: cred.user!.uid,
+        //     email: email,
+        //     bio: bio,
+        //     followers: [],
+        //     following: [],
+        //     photoUrl: photoUrl,
+        //     caseSearch: setSearchParam(username));
 
-        await _firestore.collection('users').doc(cred.user!.uid).set(user.toJson());
+        // await _firestore.collection('users').doc(cred.user!.uid).set(user.toJson());
         // await _firestore.collection('users').add({
         //   'username': username,
         //   'uid': cred.user!.uid,
@@ -117,6 +117,7 @@ class AuthMethods {
     }
     return res;
   }
+
   Future<void> signOut() async {
     await _auth.signOut();
   }

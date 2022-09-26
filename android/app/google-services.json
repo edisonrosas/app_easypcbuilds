@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "185920003877",
-    "project_id": "social-trip-3b4c4",
-    "storage_bucket": "social-trip-3b4c4.appspot.com"
+    "project_number": "392678315392",
+    "project_id": "easypcbuilds",
+    "storage_bucket": "easypcbuilds.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:185920003877:android:cf7b562cec24670389c4cc",
+        "mobilesdk_app_id": "1:392678315392:android:15e37cb72c8ebf005a9d65",
         "android_client_info": {
           "package_name": "com.example.turismoapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "185920003877-a4gtg3vhgl1d4etbbnphglqgudrmnpav.apps.googleusercontent.com",
+          "client_id": "392678315392-pg6vngivkkp0h7opqnpghcjhohovjjhv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCkUtT9mqTYasRjlaDgpSAtDTZ6c9X4phI"
+          "current_key": "AIzaSyCESNAnNueVgNeKXkF5dqr8qyQEd_XjZlg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "185920003877-a4gtg3vhgl1d4etbbnphglqgudrmnpav.apps.googleusercontent.com",
+              "client_id": "392678315392-pg6vngivkkp0h7opqnpghcjhohovjjhv.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "185920003877-a1hd4rf9kcu4fr6eb0qfa00mtkcoksuf.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.turismoapp"
-              }
             }
           ]
         }

@@ -47,30 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD-FddAhNGzsdX_2RY9JggX-P9pK9rgeVU',
-    appId: '1:185920003877:web:9e965e02691ac92989c4cc',
-    messagingSenderId: '185920003877',
-    projectId: 'social-trip-3b4c4',
-    authDomain: 'social-trip-3b4c4.firebaseapp.com',
-    storageBucket: 'social-trip-3b4c4.appspot.com',
-    measurementId: 'G-XZE19H5FV0',
+    apiKey: 'AIzaSyBbdOXCLJaiNgPQb6SnBpwS7w2o7IGWCI0',
+    appId: '1:392678315392:web:2f8e6424a7ba5b3a5a9d65',
+    messagingSenderId: '392678315392',
+    projectId: 'easypcbuilds',
+    authDomain: 'easypcbuilds.firebaseapp.com',
+    storageBucket: 'easypcbuilds.appspot.com',
+    measurementId: 'G-Y6ZGJHQ07W',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCkUtT9mqTYasRjlaDgpSAtDTZ6c9X4phI',
-    appId: '1:185920003877:android:cf7b562cec24670389c4cc',
-    messagingSenderId: '185920003877',
-    projectId: 'social-trip-3b4c4',
-    storageBucket: 'social-trip-3b4c4.appspot.com',
+    apiKey: 'AIzaSyCESNAnNueVgNeKXkF5dqr8qyQEd_XjZlg',
+    appId: '1:392678315392:android:15e37cb72c8ebf005a9d65',
+    messagingSenderId: '392678315392',
+    projectId: 'easypcbuilds',
+    storageBucket: 'easypcbuilds.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD2X1jRqie2TR777XFU5Z0dRHRORRenMl8',
-    appId: '1:185920003877:ios:a1eb0df4ca0a4e0f89c4cc',
-    messagingSenderId: '185920003877',
-    projectId: 'social-trip-3b4c4',
-    storageBucket: 'social-trip-3b4c4.appspot.com',
-    iosClientId: '185920003877-a1hd4rf9kcu4fr6eb0qfa00mtkcoksuf.apps.googleusercontent.com',
+    apiKey: 'AIzaSyC8K1hn8Bjgab-z8Rkohy5v7UJ14N70m_w',
+    appId: '1:392678315392:ios:21dda4482c1cd5bc5a9d65',
+    messagingSenderId: '392678315392',
+    projectId: 'easypcbuilds',
+    storageBucket: 'easypcbuilds.appspot.com',
+    iosClientId: '392678315392-8c6pg8hpuvad7bkg2nrppja8qp10vb4m.apps.googleusercontent.com',
     iosBundleId: 'com.example.turismoapp',
   );
 }

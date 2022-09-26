@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -21,7 +19,6 @@ showSnackBar(String content, BuildContext context, bool warning) {
     }
   }
 
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: getColor(),
-      content: Text(content)));
+  ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(backgroundColor: getColor(), content: Text(content)));
 }

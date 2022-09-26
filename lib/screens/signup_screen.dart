@@ -54,26 +54,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
       password: _passwordController.text,
       username: _usernameController.text,
       bio: _bioController.text,
-      file: _image!,
     );
     setState(() {
       _isLoading = false;
     });
     if (res != 'success') {
-      showSnackBar(res, context,true);
+      showSnackBar(res, context, true);
     } else {
-
       //
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: ((context) => 
-             const ResponsiveLayout(
-                mobileScreenLayout: MobileScreenLayout(),
-                webScreenLayout: WebScreenLayout(),
-              )
-          ),
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: ((context) => const ResponsiveLayout(
+              mobileScreenLayout: MobileScreenLayout(),
+              webScreenLayout: WebScreenLayout(),
+            )),
       ));
-      
     }
   }
 
@@ -81,9 +75,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const LoginScreen(),
-        ),
-      );
+      ),
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,12 +159,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onTap: signUpUser,
                       child: Container(
                         child: _isLoading
-                        ? const Center(
-                          child: CircularProgressIndicator(
-                            color: primaryColor,
-                          ),
-                        ) 
-                        : const Text("SignUp"),
+                            ? const Center(
+                                child: CircularProgressIndicator(
+                                  color: primaryColor,
+                                ),
+                              )
+                            : const Text("SignUp"),
                         width: double.infinity,
                         alignment: Alignment.center,
                         padding: const EdgeInsets.symmetric(vertical: 12),
