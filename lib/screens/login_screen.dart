@@ -80,14 +80,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 64),
                     TextFieldInput(
                         textEditingController: _emailController,
-                        hintText: "Enter your email",
+                        hintText: "ngresa tu correo",
                         textInputType: TextInputType.emailAddress),
                     const SizedBox(
                       height: 24,
                     ),
                     TextFieldInput(
                       textEditingController: _passwordController,
-                      hintText: "Enter your password",
+                      hintText: "Ingresa tu contraseña",
                       textInputType: TextInputType.text,
                       isPass: true,
                     ),
@@ -125,14 +125,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          child: Text("Don't you have an account "),
+                          child: Text("No tienes una cuenta "),
                           padding: const EdgeInsets.symmetric(vertical: 8),
                         ),
                         GestureDetector(
                           onTap: navigateToSignUp,
                           child: Container(
                             child: const Text(
-                              "Sign Up",
+                              "Crear cuenta",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             padding: const EdgeInsets.symmetric(vertical: 8),

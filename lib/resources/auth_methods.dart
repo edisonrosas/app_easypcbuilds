@@ -83,7 +83,7 @@ class AuthMethods {
         //   'followers': [],
         //   'following': [],
         // });
-        res = 'succes';
+        res = 'success';
       }
     } on FirebaseAuthException catch (err) {
       if (err.code == 'invalid-email') {

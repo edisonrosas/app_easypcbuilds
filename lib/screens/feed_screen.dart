@@ -20,7 +20,7 @@ class _FeedScreenState extends State<FeedScreen> {
         backgroundColor: mobileBackgroundColor,
         centerTitle: false,
         title: const Image(
-            image: AssetImage('assets/logo_travelgo.png'),
+            image: AssetImage('assets/logo_easypc.png'),
             height: 80,
           ),
         actions: [

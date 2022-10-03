@@ -23,6 +23,10 @@ class _AddPostState extends State<AddPost> {
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _ubicationTitleController = TextEditingController();
   final TextEditingController _ubicationSnippetController = TextEditingController();
+  final TextEditingController _priceController = TextEditingController();
+  final TextEditingController _categoryController = TextEditingController();
+  final TextEditingController _tagsController = TextEditingController();
+  final List<String> listtags =  [];
   var myMap = <String, dynamic>{};
   void getLocation(double latitud, double longitud){
     setState(() {
@@ -71,6 +75,8 @@ class _AddPostState extends State<AddPost> {
   }
 
   void postImage(String uid, String username,String profImage) async {
+
+    
     setState(() {
       isLoading = true;
     });
@@ -82,6 +88,9 @@ class _AddPostState extends State<AddPost> {
             uid,
             username,
             profImage,
+            double.parse(_priceController.text),
+            _descriptionController.text,
+            listtags,
             myMap['latitud'], myMap['longitud'],
             "",
             ""
@@ -109,6 +118,9 @@ class _AddPostState extends State<AddPost> {
             uid,
             username,
             profImage,
+            double.parse(_priceController.text),
+            _descriptionController.text,
+            listtags,
             myMap['latitud'], myMap['longitud'],
             _ubicationTitleController.text,
             _ubicationSnippetController.text
@@ -172,7 +184,8 @@ class _AddPostState extends State<AddPost> {
                   onPressed: () => postImage(
                       userProvider.getUser.uid, 
                       userProvider.getUser.username,
-                      userProvider.getUser.photoUrl,),
+                      userProvider.getUser.photoUrl
+                      ),
                   child: const Text(
                     "Post",
                     style: TextStyle(

@@ -95,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       flex: 1,
                     ),
                     const Image(
-                      image: AssetImage('assets/logo_travelgo.png'),
+                      image: AssetImage('assets/logo_easypc.png'),
                       height: 100,
                     ),
                     Stack(
@@ -127,21 +127,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(height: 64),
                     TextFieldInput(
                         textEditingController: _usernameController,
-                        hintText: "Enter your username",
+                        hintText: "Ingresa tu nombre de Usuario",
                         textInputType: TextInputType.text),
                     const SizedBox(
                       height: 24,
                     ),
                     TextFieldInput(
                         textEditingController: _emailController,
-                        hintText: "Enter your email",
+                        hintText: "Ingresa tu correo",
                         textInputType: TextInputType.emailAddress),
                     const SizedBox(
                       height: 24,
                     ),
                     TextFieldInput(
                       textEditingController: _passwordController,
-                      hintText: "Enter your password",
+                      hintText: "Ingresa tu contraseña",
                       textInputType: TextInputType.text,
                       isPass: true,
                     ),
@@ -150,7 +150,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     TextFieldInput(
                         textEditingController: _bioController,
-                        hintText: "Enter your bio",
+                        hintText: "Ingresa una descripcion",
                         textInputType: TextInputType.multiline),
                     const SizedBox(
                       height: 24,
@@ -186,7 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          child: Text("Already have an account? "),
+                          child: Text("Ya tienes una cuenta? "),
                           padding: const EdgeInsets.symmetric(vertical: 8),
                         ),
                         GestureDetector(
